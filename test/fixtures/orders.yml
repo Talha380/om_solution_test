@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_price: 9.99
+  instructions: MyText
+  user: one
+  promotion_code: one
+  discount_code: one
+  status: 1
+
+two:
+  total_price: 9.99
+  instructions: MyText
+  user: two
+  promotion_code: two
+  discount_code: two
+  status: 1

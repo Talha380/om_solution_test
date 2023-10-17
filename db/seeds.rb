@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Item.destroy_all
+
+10.times do |i|
+	Item.create!(
+		name: "Pizza #{i + 1}",
+		description: 'Delicious pizza',
+		price: rand(10..30).round(2)
+		)
+end

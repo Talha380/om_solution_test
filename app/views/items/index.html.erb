@@ -1,0 +1,28 @@
+<div class="p-4">
+	<div class="d-flex justify-content-between">
+		<h1>Items</h1>
+		<%= link_to 'Order Items', orders_path, class:'btn btn-primary mb-5' %>
+	</div>
+	<table class="table">
+		<thead class="thead">
+			<tr>
+				<th>#</th>
+				<th>Item Name</th>
+				<th>Description</th>
+				<th>Price</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<% @items.each_with_index do |item, index| %>
+			<tr>
+				<td><%= index + 1 %></td>
+				<td><%= item.name %></td>
+				<td><%= item.description %></td>
+				<td>$ <%= item.price %></td>
+				<td><%= link_to 'Order', new_order_item_path(id: item.id), class:'btn btn-primary' %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
