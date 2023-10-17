@@ -1,0 +1,32 @@
+<div class="card mb-3 p-4" >
+  <div class="row g-0">
+		<h2 class="card-title">Orders</h5>
+		  <div class="col-md-12">
+		  	<% if @order.present? %>
+			  	<% @order.order_items.each do |order_item|%>
+				      <div class="card-body">
+				        <h5 class="card-title"><%= order_item.item.name %></h5>
+				        <p class="card-text"><%= order_item.item.description %></p>
+				        <p class="card-text">Price: $<%= order_item.item.price %></p>
+				        <p class="card-text">Instructions: <%= order_item.instructions ? order_item.instructions : 'nil'  %></p>
+				        <p class="card-text">Quantity: <small class="text-muted"><%= order_item.quantity%></small></p>
+				        <p class="card-text">Subtotal: <small class="text-muted">$<%= order_item.subtotal%></small></p>
+				      </div>
+			    <% end %>
+			    <h3>Order Detail</h3>
+			    <p class="card-text">ID: <small class="text-muted"><%= @order.id %></small></p>
+			    <p class="card-text">Created At: <small class="text-muted"><%= @order.updated_at.strftime("%Y-%m-%d, %H:%M:%S") %></small></p>			    
+			    <p class="card-text">Promotion Code: <small class="text-muted"> -</small></p>			    
+			    <p class="card-text">Discount Code: <small class="text-muted">  -</small></p>
+			    <p class="card-text">Total Price: <small class="text-muted">$<%= @order.total_price %></small></p>
+
+				 	<%= form_for(@order, url: order_path(@order), method: :put) do |f|%>
+				  	<%= f.text_area :instructions, class:'form-control', placeholder: 'Write Instruction here...' %>
+				  	<%= f.submit 'Complete', class:'btn btn-success mt-3' %>
+					<% end %>
+				<% else %>
+					<p class="card-text">No order yet</p>
+				<% end %>
+		</div>
+  </div>
+</div>
